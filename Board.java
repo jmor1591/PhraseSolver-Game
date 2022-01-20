@@ -10,14 +10,28 @@ public class  Board
 {
   private String phrase = "";
   private String solvedPhrase = "";
-  private int currentLetterValue; 
+  private int currentLetterValue;
+  private int turn = 1; 
 
   /* your code here - constructor(s) */
   public Board()
   {
     phrase = loadPhrase();
     setLetterValue();
-  } 
+    System.out.println("Phrase: " + phrase); //temp test code
+    System.out.println("Solved Phrase: " + solvedPhrase);
+  }
+
+  public void printSolved()
+  {
+    System.out.println(solvedPhrase);
+  }
+
+  public void advanceTurn()
+  {
+    turn++;
+    System.out.println("Turn " + turn);
+  }
   
   /* your code here - accessor(s) */
   
@@ -87,24 +101,45 @@ public class  Board
     return tempPhrase;
   }  
 
+
+  /*
+    Precondition(s): 
+    guess must be a string and be populated
+    phrase must be populated
+    solved phrase must be populated and have spaces
+
+    Postcondition(s):
+  */
   public boolean guessLetter(String guess)
   {
+    //boolean that it is used to know if the user's guess is in the phrase
     boolean foundLetter = false;
+
+    //create a string to store either the guess or store _ in the future
     String newSolvedPhrase = "";
     
+    //loops through all characters in the string
     for (int i = 0; i < phrase.length(); i++)
     {
+      //compares each letter to guess
       if (phrase.substring(i, i + 1).equals(guess))
       {
+        //if the letter matches the guess, then add the guess to part of the newSolvedPhrase and prepare for the next character
         newSolvedPhrase += guess + " ";
+
+        //indicates that the guess is in the phrase
         foundLetter = true;
       }
       else
       {
-        newSolvedPhrase += solvedPhrase.substring(i * 2, i * 2 + 1) + " ";  
+        //if the selected character of the phrase is not the same as the guess, skip that part of the phrase and move on
+        newSolvedPhrase += solvedPhrase.substring(i * 2, i * 2 + 1) + " ";
       }
     }
+    //update the solvedPhrase after you checked if the guess was in the phrase
     solvedPhrase = newSolvedPhrase;
+
+    //return if the guess is in the phrase or not
     return foundLetter;
   }
 } 

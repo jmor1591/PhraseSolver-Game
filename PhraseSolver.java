@@ -12,7 +12,9 @@ public class PhraseSolver
   /* your code here - constructor(s) */
   public PhraseSolver()
   {
-    
+    Player player1 = new Player();
+    Player player2 = new Player();
+    boolean solved = false;
   }
 
   /* your code here - accessor(s) */
@@ -36,7 +38,6 @@ public class PhraseSolver
       /* your code here - determine how game ends */
       solved = true; 
     } 
-   
   }
   
 }
