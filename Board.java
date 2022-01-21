@@ -22,11 +22,6 @@ public class  Board
     System.out.println("Solved Phrase: " + solvedPhrase);
   }
 
-  public void printSolved()
-  {
-    System.out.println(solvedPhrase);
-  }
-
   public void advanceTurn()
   {
     turn++;
@@ -34,6 +29,15 @@ public class  Board
   }
   
   /* your code here - accessor(s) */
+  public int getLetterValue()
+  {
+    return currentLetterValue;
+  }
+
+  public void printSolved()
+  {
+    System.out.println(solvedPhrase);
+  }
   
   /* your code here - mutator(s)  */
 
@@ -103,12 +107,16 @@ public class  Board
 
 
   /*
+    Description: Will return if the player's guess was found in the phrase or not
+
     Precondition(s): 
     guess must be a string and be populated
     phrase must be populated
     solved phrase must be populated and have spaces
 
     Postcondition(s):
+    solvedPhrase is populated again
+    guessLetter returns a boolean (needs to be stored or used)
   */
   public boolean guessLetter(String guess)
   {

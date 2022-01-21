@@ -10,6 +10,7 @@ public class Player
   /* your code here - attributes */
   private String name = ""; 
   private double points = 0;
+  private String pastGuesses = "";
   /* your code here - constructor(s) */ 
   public Player()
   {
@@ -44,8 +45,18 @@ public class Player
   {
     return points;
   }
-  /* your code here - accessor(s) */ 
-
-  /* your code here - mutator(s) */ 
+  /* your code here - accessor(s) */
+  
+  public String getPastGuesses() 
+  {
+    return pastGuesses;
+  }
+  /* your code here - mutator(s) */
+  
+  public void addGuess(String guess)
+  {
+    pastGuesses += guess;
+  }
+  
   
 }

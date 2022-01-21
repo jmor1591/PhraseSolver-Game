@@ -16,8 +16,6 @@ public class Runner
     Board b = new Board();
     // Player player1 = new Player();
     // Player player2 = new Player();
-    System.out.println("Guess a letter or guess the phrase");
-    b.guessLetter(sc.nextLine());
     p.play();
   }
 
