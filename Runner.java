@@ -14,9 +14,9 @@ public class Runner
     Scanner sc = new Scanner(System.in);
     PhraseSolver p = new PhraseSolver();
     Board b = new Board();
-    // Player player1 = new Player();
-    // Player player2 = new Player();
-    p.play();
+    Player p1 = new Player();
+    Player p2 = new Player();
+    p.play(b,p1,p2);
   }
 
 } 

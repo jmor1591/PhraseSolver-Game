@@ -10,8 +10,9 @@ public class  Board
 {
   private String phrase = "";
   private String solvedPhrase = "";
+  private String exSolvedPhrase = "";
   private int currentLetterValue;
-  private int turn = 1; 
+  private int turn = 1;
 
   /* your code here - constructor(s) */
   public Board()
@@ -34,9 +35,14 @@ public class  Board
     return currentLetterValue;
   }
 
-  public void printSolved()
+  public String getSolved()
   {
-    System.out.println(solvedPhrase);
+    return solvedPhrase;
+  }
+
+  public String getExSolved()
+  {
+    return exSolvedPhrase;
   }
   
   /* your code here - mutator(s)  */
@@ -95,10 +101,12 @@ public class  Board
       if (tempPhrase.substring(i, i + 1).equals(" "))
       {
         solvedPhrase += "  ";
+        exSolvedPhrase += "  ";
       }  
       else
       {
         solvedPhrase += "_ ";
+        exSolvedPhrase += tempPhrase.substring(i, i + 1) + " ";
       }
     }  
     
