@@ -10,23 +10,17 @@ public class  Board
 {
   private String phrase = "";
   private String solvedPhrase = "";
-  private String exSolvedPhrase = "";
+  private String exPhrase = "";
   private int currentLetterValue;
-  private int turn = 1;
+  private int totalLetterValue;
+  private int amountSolved;
 
   /* your code here - constructor(s) */
   public Board()
   {
     phrase = loadPhrase();
-    setLetterValue();
     System.out.println("Phrase: " + phrase); //temp test code
     System.out.println("Solved Phrase: " + solvedPhrase);
-  }
-
-  public void advanceTurn()
-  {
-    turn++;
-    System.out.println("Turn " + turn);
   }
   
   /* your code here - accessor(s) */
@@ -35,21 +29,36 @@ public class  Board
     return currentLetterValue;
   }
 
+  public int getTotalLetterValue()
+  {
+    return totalLetterValue;
+  }
+
   public String getSolved()
   {
     return solvedPhrase;
   }
 
+  public String getPhrase()
+  {
+    return phrase;
+  }
+
   public String getExSolved()
   {
-    return exSolvedPhrase;
+    return exPhrase;
+  }
+
+  public int getAmountSolved()
+  {
+    return amountSolved;
   }
   
   /* your code here - mutator(s)  */
 
 
   /* ---------- provided code, do not modify ---------- */
-  public void setLetterValue()
+  private void setLetterValue()
   {
     int randomInt = (int) ((Math.random() * 10) + 1) * 100;    
     currentLetterValue = randomInt;
@@ -66,6 +75,7 @@ public class  Board
 
   private String loadPhrase()
   {
+    setLetterValue();
     String tempPhrase = "";
     
     int numOfLines = 0;
@@ -101,12 +111,13 @@ public class  Board
       if (tempPhrase.substring(i, i + 1).equals(" "))
       {
         solvedPhrase += "  ";
-        exSolvedPhrase += "  ";
+        exPhrase += "  ";
       }  
       else
       {
         solvedPhrase += "_ ";
-        exSolvedPhrase += tempPhrase.substring(i, i + 1) + " ";
+        exPhrase += tempPhrase.substring(i, i + 1) + " ";
+        totalLetterValue += currentLetterValue;
       }
     }  
     
@@ -142,6 +153,7 @@ public class  Board
       {
         //if the letter matches the guess, then add the guess to part of the newSolvedPhrase and prepare for the next character
         newSolvedPhrase += guess + " ";
+        amountSolved++;
 
         //indicates that the guess is in the phrase
         foundLetter = true;

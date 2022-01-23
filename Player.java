@@ -9,7 +9,7 @@ public class Player
 {
   /* your code here - attributes */
   private String name = ""; 
-  private double points = 0;
+  private int points = 0;
   private String pastGuesses = "";
   /* your code here - constructor(s) */ 
   public Player()
@@ -41,7 +41,7 @@ public class Player
     name = inputName;
   }
 
-  public double getPoints()
+  public int getPoints()
   {
     return points;
   }
@@ -56,6 +56,11 @@ public class Player
   public void addGuess(String guess)
   {
     pastGuesses += guess;
+  }
+
+  public void addPoints(double bonus)
+  {
+    points += bonus;
   }
   
   
